@@ -1,0 +1,16 @@
+{
+  "name": "trifid-admin",
+  "version": "0.0.1",
+  "description": "Trifid deployment for data.admin.ch SPARQL Endpoint",
+  "main": "index.js",
+  "dependencies": {
+    "trifid": "^1.0.2",
+    "trifid-renderer-simple": "0.0.9",
+    "zack-search": "https://github.com/zazuko/zack-search#develop"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "trifid --config config.admin.json",
+    "start-local": "trifid --config config.admin.local.json"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "baseConfig": "trifid:config-sparql.json",
+  "sparqlEndpointUrl": "http://lindas-data.ch/sparql",
+  "staticFiles": {
+    "rendererFiles": {
+      "path": "/",
+      "folder": "renderer:public"
+    },
+    "swisstopoFiles": {
+      "path": "/",
+      "folder": "cwd:public"
+    },
+    "zackFiles": {
+      "path": "/search/",
+      "folder":  "cwd:node_modules/zack-search/dist"
+    }
+  },
+  "handler": {
+    "options": {
+      "resourceGraphQuery": "DEFINE sql:describe-mode 'CBD' DESCRIBE <${iri}>",
+      "containerGraphQuery": "CONSTRUCT { ?s a ?o . ?s <https://gont.ch/municipalityVersionName> ?name. ?version <https://gont.ch/longName> ?name } WHERE { ?s a ?o . OPTIONAL {?s <https://gont.ch/municipalityVersion> ?version. ?version <https://gont.ch/longName> ?name.} FILTER REGEX(STR(?s), \"^${iri}\") }"
+    }
+  },
+  "renderer": {
+    "module": "trifid-renderer-simple",
+    "template": "cwd:data/template.html",
+    "templateError": "cwd:data/error.html",
+    "vocab": "renderer:vocab.json"
+  },
+  "sparqlProxy": {
+    "options": {
+      "queryOperation": "urlencode"
+    }
+  }
+}
