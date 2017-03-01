@@ -116,31 +116,20 @@ boundariesRenderer.init = function (metadata) {
 boundariesRenderer.renderResult = function (page, subject) {
   var rendering = ''
 
-  var title = page.match(subject, 'http://schema.org/name').toArray().shift()
   var link = subject.toString()
-  var titleString = title.object.toString()
+  var titleString = subject.toString()
 
   var titlePrefix = ''
-  if (page.match(subject, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.geonames.org/ontology#A.ADM1').toArray().shift()) { titlePrefix = "Canton" }
-  if (page.match(subject, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.geonames.org/ontology#A.ADM2').toArray().shift()) { titlePrefix = "District" }
-  if (page.match(subject, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://www.geonames.org/ontology#A.ADM3').toArray().shift()) { titlePrefix = "Municipality" }
+  if (page.match(subject, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'https://gont.ch/PoliticalMunicipality').toArray().shift()) { titlePrefix = "Municipality" }
 
-  var bfsNumber = page.match(subject, 'https://ld.geo.admin.ch/def/bfsNumber').toArray().shift()
+  var bfsNumber = page.match(subject, 'http://purl.org/dc/terms/identifier').toArray().shift()
   if (bfsNumber) {var bfsNumberString = bfsNumber.object.toString()}
 
-
-  var map = page.match(subject, 'http://schema.org/hasMap').toArray().shift()
-  var mapString = map.object.toString()
-
-  var geojson = page.match(subject, 'http://schema.org/sameAs').toArray().shift()
-  var geojsonString = geojson.object.toString()
-
-
-  var versions = page.match(subject, 'http://purl.org/dc/terms/hasVersion').toArray()
+  var versions = page.match(subject, 'https://gont.ch/municipalityVersion').toArray()
   var versionsSpan = ''
   if (versions) {
       versions.forEach(function(ver, ind){
-          versionsSpan = versionsSpan + '<span>' + (ind ? ', ' : '') + '<a href="' + ver.object.toString() + '">' + ver.object.toString().split(":")[2] + '</span>'
+          versionsSpan = versionsSpan + '<span>' + (ind ? ', ' : '') + '<a href="' + ver.object.toString() + '">' + ver.object.toString().split("/")[4] + '</span>'
       })
   }
 
@@ -152,9 +141,7 @@ boundariesRenderer.renderResult = function (page, subject) {
               '<span>BFS #' + bfsNumberString + '</span>' +
               '</div>' +
               '<div class="result-detail col-md-3 col-sm-6 col-xs-6">' +
-              '<span><a href="' + mapString + '">map.geo.admin.ch</a></span> | ' +
-              '<span><a href="' + geojsonString + '">GeoJSON</a></span><br>' +
-              'Version: ' + versionsSpan + '' +
+              'Versions: ' + versionsSpan + '' +
               '</div>' +
 
               '</article></div>'
