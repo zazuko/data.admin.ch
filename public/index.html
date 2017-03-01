@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html>
  <head>
-   <script id="vocab" type="application/ld+json">{{{vocab}}}</script>
-   <script id="data" type="application/ld+json">{{{graph}}}</script>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="/css/admin.css">
-   <script src="https://cdn.jsdelivr.net/g/es6-promise@1.0.0"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonld/0.4.11/jsonld.js"></script>
-   <script src="https://unpkg.com/react@0.12/dist/react.min.js"></script>
-   <style>
-      .table-graph { table-layout: fixed; }
-      .table-object { overflow: hidden; }
-   </style>
  </head>
  <body>
  <div class="container container-main">
@@ -49,13 +40,28 @@
   </nav>
 
   <div class="container-fluid">
-   <div class="col-sm-12">
-     <div class="row">
-       <div id="title"></div>
-       <div id="sticky"></div>
+   <div class="col-sm-12 col-md-12">
+    <div class="row ">
+     <h1>data.admin.ch - Linked Data Pilot</h1>
+     <p></p>
+    </div>
+   </div>
+   <div class="col-sm-12 col-md-3">
+     <div class="row ">
+         <p>
+         </p>
      </div>
-     <div class="row">
-       <div id="graph"></div>
+   </div>
+   <div class="col-sm-12 col-md-3 col-md-offset-1">
+     <div class="row ">
+         <p>
+         </p>
+     </div>
+   </div>
+   <div class="col-sm-12 col-md-3 col-md-offset-1">
+     <div class="row ">
+         <p>
+         </p>
      </div>
     </div>
   </div>
@@ -68,17 +74,16 @@
    </div>
 
    <address>
-    <span class="hidden-xs pull-left">data.admin.ch - Linked Data Pilot</span>
+    <span class="hidden-xs pull-left">data.admin.ch - Linked Data</span>
     <nav class="pull-right">
      <ul>
-       <li><a href="//www.admin.ch/gov/en/start/terms-and-conditions.html">Disclaimer</a></li>
+       <li><a target="_blank" href="//www.admin.ch/gov/en/start/terms-and-conditions.html">Disclaimer</a></li>
      </ul>
     </nav>
    </address>
   </footer>
  </div>
 
- <script src="/js/render-ld.js"></script>
- <div class="text-center small">Powered by <a href="//github.com/zazuko/trifid">Trifid</a></span>
+ <div class="text-center small">Powered by <a href="//github.com/zazuko/trifid" target="_blank">Trifid</a></span>
  </body>
 </html>

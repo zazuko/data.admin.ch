@@ -6,9 +6,13 @@
       "path": "/",
       "folder": "renderer:public"
     },
-    "swisstopoFiles": {
+    "dataadminFiles": {
       "path": "/",
       "folder": "cwd:public"
+    },
+    "styleFiles": {
+      "path": "/",
+      "folder": "cwd:node_modules/swiss-styleguide/build"
     },
     "zackFiles": {
       "path": "/search/",
