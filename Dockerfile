@@ -1,4 +1,4 @@
-FROM node:8.1.2
+FROM node:6.9-onbuild
 
 RUN npm install pm2 -g
 
