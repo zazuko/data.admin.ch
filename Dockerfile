@@ -7,7 +7,7 @@ ENV TRIFID_CONFIG config.admin.json
 ADD config.admin.json /usr/src/app/
 ADD data /usr/src/app/data
 
-CMD pm2-docker /usr/src/app/node_modules/.bin/trifid -- --config $TRIFID_CONFIG
+CMD pm2-docker pm2-config.yml
 
 EXPOSE 8080
 
