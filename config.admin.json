@@ -30,5 +30,11 @@
     "template": "cwd:data/template.html",
     "templateError": "cwd:data/error.html",
     "vocab": "renderer:vocab.json"
+  },
+  "yasgui": {
+    "options": {
+      "template": "cwd:data/yasgui.html",
+      "map": "chmaps"
+    }
   }
 }

@@ -5,9 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "swiss-styleguide": "^3.0.0",
-    "trifid": "^1.0.2",
-    "trifid-renderer-simple": "^1.0.1",
-    "zack-search": "https://github.com/zazuko/zack-search#develop"
+    "trifid": "^1.4.0",
+    "trifid-renderer-simple": "^1.0.2",
+    "zack-search": "git+https://github.com/zazuko/zack-search.git#develop"
   },
   "devDependencies": {},
   "scripts": {
