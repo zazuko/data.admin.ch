@@ -1,6 +1,15 @@
 {
-  "baseConfig": "trifid:config-virtuoso.json",
-  "sparqlEndpointUrl": "http://lindas-data.ch/sparql",
+  "baseConfig": "trifid:config-sparql.json",
+  "sparqlEndpointUrl": "https://lindasprd.netrics.ch:8443/annex/lindas/sparql/query",
+  "sparqlProxy": {
+    "options": {
+      "queryOperation": "postQueryUrlencoded",
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      }
+    }
+  },
   "staticFiles": {
     "rendererFiles": {
       "path": "/",
@@ -21,8 +30,12 @@
   },
   "handler": {
     "options": {
-      "resourceGraphQuery": "DEFINE sql:describe-mode 'CBD' DESCRIBE <${iri}>",
-      "containerGraphQuery": "CONSTRUCT { ?s a ?o . ?s <https://gont.ch/municipalityVersionName> ?name. ?version <https://gont.ch/longName> ?name } WHERE { ?s a ?o . OPTIONAL {?s <https://gont.ch/municipalityVersion> ?version. ?version <https://gont.ch/longName> ?name.} FILTER REGEX(STR(?s), \"^${iri}\") }"
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      },
+      "resourceExistsQuery": "ASK { GRAPH ?g { <${iri}> ?p ?o }}",
+      "resourceGraphQuery": "DESCRIBE <${iri}>"
     }
   },
   "renderer": {
