@@ -1,6 +1,6 @@
 {
   "baseConfig": "trifid:config-sparql.json",
-  "sparqlEndpointUrl": "https://lindasprd.netrics.ch:8443/annex/lindas/sparql/query",
+  "sparqlEndpointUrl": "https://lindas-data.ch:8443/annex/lindas/sparql/query",
   "sparqlProxy": {
     "options": {
       "queryOperation": "postQueryUrlencoded",
