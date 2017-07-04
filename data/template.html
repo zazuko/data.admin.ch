@@ -5,10 +5,9 @@
    <script id="data" type="application/ld+json">{{{graph}}}</script>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="//cdn.jsdelivr.net/g/es6-promise@1.0.0"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jsonld/0.4.12/jsonld.min.js"></script>
    <link rel="stylesheet" href="/css/admin.css">
-   <script src="https://cdn.jsdelivr.net/g/es6-promise@1.0.0"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonld/0.4.11/jsonld.js"></script>
-   <script src="https://unpkg.com/react@0.12/dist/react.min.js"></script>
    <style>
       .table-graph { table-layout: fixed; }
       .table-object { overflow: hidden; }
@@ -54,7 +53,7 @@
    <div class="col-sm-12">
      <div class="row">
        <div id="title"></div>
-       <div id="sticky"></div>
+       <div id="subtitle"></div>
      </div>
      <div class="row">
        <div id="graph"></div>
