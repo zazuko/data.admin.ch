@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="/css/admin.css">
- </head>
- <body>
- <div class="container container-main">
   <header>
-   <nav class="navbar treecrumb pull-left nav-open" role="navigation"></nav>
+   <nav class="navbar treecrumb pull-left nav-open"></nav>
    <div class="clearfix"></div>
    <div class="clearfix">
     <a href="/#" class="brand hidden-xs" title="back to home">
@@ -22,7 +13,8 @@
     </form>
    </div>
   </header>
-  <nav class="nav-main yamm navbar" id="main-navigation">
+
+  <nav class="nav-main yamm navbar" id="main-navigation" role="navigation">
   <section class="nav-mobile nav-open">
     <div class="table-row nav-open">
       <div class="nav-mobile-header">
@@ -69,55 +61,5 @@
       <a href="/sparql/">SPARQL Query</a>
     </li>
   </ul>
+
   </nav>
-
-  <div class="container-fluid">
-   <div class="col-sm-12 col-md-12">
-    <div class="row ">
-     <h1>data.admin.ch - Linked Data Pilot</h1>
-     <p></p>
-    </div>
-   </div>
-   <div class="col-sm-12 col-md-3">
-     <div class="row ">
-         <p>
-         </p>
-     </div>
-   </div>
-   <div class="col-sm-12 col-md-3 col-md-offset-1">
-     <div class="row ">
-         <p>
-         </p>
-     </div>
-   </div>
-   <div class="col-sm-12 col-md-3 col-md-offset-1">
-     <div class="row ">
-         <p>
-         </p>
-     </div>
-    </div>
-  </div>
-
-  <footer>
-   <div class="container-fluid">
-    <h3>&nbsp;</h3>
-    <hr class="footer-line visible-xs">
-    <img class="visible-xs" src="/img/logo-CH.svg" onerror="this.onerror=null; this.src='/img/logo-CH.png'" alt="">
-   </div>
-
-   <address>
-    <span class="hidden-xs pull-left">data.admin.ch - Linked Data</span>
-    <nav class="pull-right">
-     <ul>
-       <li><a target="_blank" href="//www.admin.ch/gov/en/start/terms-and-conditions.html">Disclaimer</a></li>
-     </ul>
-    </nav>
-   </address>
-  </footer>
- </div>
-
- <script src="/js/vendors.min.js"></script>
- <script src="/js/main.min.js"></script>
- <div class="text-center small">Powered by <a href="//github.com/zazuko/trifid">Trifid</a></span>
- </body>
-</html>

@@ -1,0 +1,47 @@
+${set('moduleAbout','<a href="http://about.yasgui.org/" target="_blank">YASGUI</a>')}
+<!DOCTYPE html>
+<html>
+ <head>
+
+${include('cwd:views/header.html')}
+  <link href="dist/yasgui.css" rel="stylesheet" type="text/css" />
+  <style>
+    .tab-content {
+        padding: 0px;
+     }
+  </style>
+ </head>
+ <body>
+ <div class="container container-main">
+
+${include('cwd:views/navigation.html')}
+
+ <div class="container-fluid">
+   <div class="col-sm-12">
+     <div class="row">
+       <h1>SPARQL Query</h1>
+       <div id="yasgui"></div>
+     </div>
+   </div>
+  </div>
+
+${include('cwd:views/footer.html')}
+ </div>
+
+ <script src="/js/vendors.min.js"></script>
+ <script src="/js/main.min.js"></script>
+ <script src="dist/yasgui.min.js"></script>
+ <script type="text/javascript">
+    // set SPARQL endpoint URL
+    YASGUI.defaults.yasqe.sparql.endpoint = '${endpointUrl}'
+
+    YASGUI.YASR.plugins.leaflet.defaults.defaultColor = '#FF8000';
+    YASGUI.YASR.plugins.leaflet.defaults.defaultStyle = { fillOpacity: 0.75, fillColor: '#FFFF00' };
+
+    YASGUI.YASR.plugins.leaflet.defaults.defaultMap = 'chmaps';
+    var yasgui = YASGUI(document.getElementById('yasgui'))
+ </script>
+
+${include('cwd:views/powered.html')}
+ </body>
+</html>

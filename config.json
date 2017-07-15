@@ -1,0 +1,55 @@
+{
+  "baseConfig": "trifid:config-sparql.json",
+  "sparqlEndpointUrl": "https://lindas-data.ch:8443/annex/lindas/sparql/query",
+  "sparqlProxy": {
+    "options": {
+      "queryOperation": "postQueryUrlencoded",
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      }
+    }
+  },
+  "staticViews": {
+    "/search/": "cwd:views/search.html"
+  },
+  "staticFiles": {
+    "rendererFiles": {
+      "path": "/",
+      "folder": "renderer:public"
+    },
+    "dataadminFiles": {
+      "path": "/",
+      "folder": "cwd:public"
+    },
+    "styleFiles": {
+      "path": "/",
+      "folder": "cwd:node_modules/swiss-styleguide/build"
+    },
+    "zackFiles": {
+      "path": "/search/",
+      "folder":  "cwd:node_modules/zack-search/dist"
+    }
+  },
+  "handler": {
+    "options": {
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      },
+      "resourceExistsQuery": "ASK { GRAPH ?g { <${iri}> ?p ?o }}",
+      "resourceGraphQuery": "DESCRIBE <${iri}>"
+    }
+  },
+  "renderer": {
+    "module": "trifid-renderer-simple",
+    "template": "cwd:views/index.html",
+    "templateError": "cwd:views/error.html",
+    "vocab": "renderer:vocab.json"
+  },
+  "yasgui": {
+    "options": {
+      "template": "cwd:views/yasgui.html"
+    }
+  }
+}

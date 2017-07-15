@@ -10,12 +10,18 @@
  <div class="container container-main">
   <header>
    <nav class="navbar treecrumb pull-left nav-open" role="navigation"></nav>
+   <div class="clearfix"></div>
    <div class="clearfix">
+    <a href="/#" class="brand hidden-xs" title="back to home">
+      <img src="/img/logo-CH.svg" onerror="this.onerror=null; this.src='/img/logo-CH.png'" alt="back to home" />
+      <h1>data.admin.ch - Linked Data Pilot</h1>
+    </a>
+    <form class="form-horizontal form-search pull-right" role="form" action="/search/">
+      <h2 class="sr-only">Search</h2>
+      <label for="search-field" class="sr-only">Search:</label>
+      <input id="search-field" name="q" class="form-control search-field" type="text" placeholder="Search">
+    </form>
    </div>
-   <a href="/" class="brand hidden-xs">
-    <img src="/img/logo-CH.svg" onerror="this.onerror=null; this.src='/img/logo-CH.png'">
-    <h1>data.admin.ch - Linked Data Pilot</h1>
-   </a>
   </header>
   <nav class="nav-main yamm navbar" id="main-navigation" role="navigation">
   <section class="nav-mobile nav-open">
@@ -25,22 +31,45 @@
           <span class="nav-mobile-logo">
             <img src="/img/swiss.svg" onerror="this.onerror=null; this.src='/img/swiss.png'" alt="Confederatio Helvetica">
           </span>
-          <h1>
-            <a href="#">data.admin.ch - Linked Data Pilot</a>
-          </h1>
+          <h1><a href="#">data.admin.ch - Linked Data Pilot</a></h1>
         </div>
       </div>
-    </div>
+      <div class="table-cell dropdown">
+       <a href="#" class="nav-mobile-menu dropdown-toggle" data-toggle="dropdown"><span class="icon icon--menu"></span></a>
+       <div class="drilldown dropdown-menu" role="menu">
+         <div class="drilldown-container">
+           <nav class="nav-page-list">
+             <ul>
+               <li><a href="/search/">Search</a></li>
+               <li><a href="/sparql/">SPARQL Query</a></li>
+             </ul>
+             <a href="#" class="yamm-close-bottom"><span class="icon icon--top" aria-hidden="true"></span></a>
+           </nav>
+         </div>
+       </div>
+     </div>
+     <div class="table-cell dropdown">
+       <a href="#" class="nav-mobile-menu dropdown-toggle" data-toggle="dropdown"><span class="icon icon--search"></span></a>
+       <div class="dropdown-menu" role="menu">
+         <form class="form" role="form" action="/search/">
+           <h2 class="sr-only">Search</h2>
+           <label for="search-field" class="sr-only">Search:</label>
+           <input name="q" class="form-control" type="text" placeholder="Search">
+           <span class="icon icon--search"></span>
+         </form>
+       </div>
+     </div>
+   </div>
   </section>
-  <ul class="nav navbar-nav nav-open">
-    <li class="dropdown yamm-fw current">
-      <a href="/search">Search</a>
+
+  <ul class="nav navbar-nav">
+    <li class="dropdown current yamm-fw">
+      <a href="/search/">Search</a>
     </li>
     <li class="dropdown yamm-fw">
-      <a href="/sparql">SPARQL Query</a>
+      <a href="/sparql/">SPARQL Query</a>
     </li>
   </ul>
-
   </nav>
 
   <div class="container-fluid">
@@ -101,7 +130,7 @@
    </div>
 
    <address>
-    <span class="hidden-xs pull-left">geo.admin.ch - Linked Data</span>
+    <span class="hidden-xs pull-left">data.admin.ch - Linked Data Pilot</span>
     <nav class="pull-right">
      <ul>
        <li><a target="_blank" href="//www.admin.ch/gov/en/start/terms-and-conditions.html">Disclaimer</a></li>
@@ -114,7 +143,10 @@
 
 
  <div class="text-center small">Powered by <a href="//github.com/zazuko/trifid" target="_blank">Trifid</a> & <a href="//github.com/zazuko/zack-search" target="_blank">Zack Search</a></span>
+<script src="/js/vendors.min.js"></script>
+<script src="/js/main.min.js"></script>
 <script src="zack.min.js"></script>
+
 <script>
 
 var boundariesRenderer = {}
