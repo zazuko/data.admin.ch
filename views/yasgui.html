@@ -37,13 +37,16 @@ ${include('cwd:views/footer.html')}
  <script src="dist/yasgui.min.js"></script>
  <script type="text/javascript">
     // set SPARQL endpoint URL
+
     YASGUI.defaults.yasqe.sparql.endpoint = '${endpointUrl}'
 
     YASGUI.YASR.plugins.leaflet.defaults.defaultColor = '#FF8000';
     YASGUI.YASR.plugins.leaflet.defaults.defaultStyle = { fillOpacity: 0.75, fillColor: '#FFFF00' };
 
     YASGUI.YASR.plugins.leaflet.defaults.defaultMap = 'chmaps';
-    var yasgui = YASGUI(document.getElementById('yasgui'))
+
+    var config = {"api":{"urlShortener":"http://yasgui.org/shorten"}};
+    var yasgui = YASGUI(document.getElementById('yasgui'), config)
  </script>
 
 ${include('cwd:views/powered.html')}
