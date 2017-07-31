@@ -1,6 +1,0 @@
-apps:
-  - script   : ./node_modules/.bin/trifid
-    name     : 'admin'
-    args     : '--config config.json'
-    instances: 0
-    exec_mode: 'cluster'
