@@ -11,7 +11,8 @@
     }
   },
   "staticViews": {
-    "/search/": "cwd:views/search.html"
+    "/search/classifications/": "cwd:views/search/classifications.html",
+    "/visualizations/map/": "cwd:views/visualizations/map.html"
   },
   "staticFiles": {
     "rendererFiles": {
@@ -27,7 +28,7 @@
       "folder": "cwd:node_modules/swiss-styleguide/build"
     },
     "zackFiles": {
-      "path": "/search/",
+      "path": "/search/classifications/",
       "folder":  "cwd:node_modules/zack-search/dist"
     }
   },
