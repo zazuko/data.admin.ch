@@ -1,0 +1,125 @@
+${set('moduleFoot',`
+       <p>
+        <ul>
+          <li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a></li>
+          <li><a href="http://d3js.org/">d3.js</a> &copy; 2012 Michael Bostock</li>
+          <li><a href="http://biohackathon.org/d3sparql/">d3sparql</a> &copy; 2015 Toshiaki Katayama</li>
+        </ul>
+       </p>
+`)}
+<!DOCTYPE html>
+<html>
+ <head>
+
+${include('cwd:views/header.html')}
+
+  <style>
+    .node rect {
+      cursor: move;
+      fill-opacity: .9;
+      shape-rendering: crispEdges;
+    }
+    .node text {
+      pointer-events: none;
+      text-shadow: 0 1px 0 #fff;
+    }
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-opacity: .2;
+    }
+    .link:hover {
+      stroke-opacity: .5;
+    }
+  </style>
+ </head>
+ <body>
+ <div class="container container-main">
+
+${include('cwd:views/navigation.html')}
+
+  <div class="container-fluid">
+   <div class="col-sm-12">
+    <div class="row">
+      <h1>Municipality Change Events</h1>
+      <h3>All events since 1960</h3>
+      <form class="form-inline" style="display: none;">
+        <div class="input-append" style="display: none;">
+          <input id="endpoint" class="span5" value="http://classifications.data.admin.ch/query" type="text">
+          <button class="btn" type="button" onclick="exec()">Query</button>
+        </div>
+      </form>
+      <textarea id="sparql" class="span9" rows=15 style="display: none;">
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gont: <https://gont.ch/> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX canton: 	<http://classifications.data.admin.ch/canton/>
+PREFIX ech71: <http://data.admin.ch/id/code/ech-0071/>
+
+SELECT ?parent ?parent_name ?child ?child_name ?abmode ?admode
+
+WHERE {
+  
+  ?event a gont:MunicipalityChangeEvent ;
+    gont:id ?eventid ;
+    gont:date ?eventdate .
+
+    ?parent a gont:MunicipalityVersion ;
+      gont:shortName ?parent_name ;
+      gont:abolitionMode ?abmode ;
+      gont:abolitionEvent ?event .
+    
+    ?child a gont:MunicipalityVersion ;
+      gont:shortName ?_child_name ;
+      gont:admissionMode ?admode ;
+      gont:admissionEvent ?event .
+  
+  FILTER(?admode IN (ech71:21, ech71:23)).
+  FILTER(?abmode IN (ech71:29, ech71:23)).
+  
+  BIND (CONCAT(?_child_name, ' (', str(year(?eventdate)),')') AS ?child_name).
+}
+ORDER BY ?eventid         
+     </textarea>
+     <div id="result"></div>
+
+    </div>
+   </div>
+  </div>
+
+${include('cwd:views/footer.html')}
+ </div>
+
+ <script src="/js/vendors.min.js"></script>
+ <script src="/js/main.min.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+ <script src="/visualizations/municipality-events/sankey.js"></script>
+ <script src="/visualizations/municipality-events/d3sparql.js"></script>
+
+    <script>
+    function render(json) {
+      var config = {
+        // for d3sparql.graph()
+        "key1": "parent",
+        "key2": "child",
+        "label1": "parent_name",
+        "label2": "child_name",
+        // for d3sparql.sankey()
+        "width": document.getElementsByClassName('container')[0].offsetWidth - 50,
+        "height": 12000,
+        "selector": "#result"
+      }
+      d3sparql.sankey(json, config)
+    }
+
+    window.onload = function () { 
+      var endpoint = d3.select("#endpoint").property("value")
+      var sparql = d3.select("#sparql").property("value")
+      d3sparql.query(endpoint, sparql, render)
+    }
+    </script>
+
+${include('cwd:views/powered.html')}
+ </body>
+</html>
