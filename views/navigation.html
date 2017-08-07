@@ -32,6 +32,17 @@
            <nav class="nav-page-list">
              <ul>
                <li><a href="/search/classifications/">Search</a></li>
+               <li class="list-sub">
+                 <a href="#">Visualizations</a>
+                 <nav class="drilldown-sub">
+                   <a href="#" class="icon icon--before icon--less drilldown-back">Back</a>
+                   <ul>
+                       <li><a href="/visualizations/map">Maps STATPOP</a></li>
+                       <li><a href="/visualizations/municipality-events">Municipality Events</a></li>
+                   </ul>
+                 </nav>
+               </li>
+
                <li><a href="/sparql/">SPARQL Query</a></li>
              </ul>
              <a href="#" class="yamm-close-bottom"><span class="icon icon--top" aria-hidden="true"></span></a>
@@ -56,9 +67,6 @@
   <ul class="nav navbar-nav">
     <li class="dropdown yamm-fw">
       <a href="/search/classifications/">Search</a>
-    </li>
-    <li class="dropdown yamm-fw">
-      <a href="/sparql/">SPARQL Query</a>
     </li>
     <li class="dropdown yamm-fw">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Visualizations</a>
@@ -88,7 +96,9 @@
         </div>
       </ul>
     </li>
-
+    <li class="dropdown yamm-fw">
+      <a href="/sparql/">SPARQL Query</a>
+    </li>
   </ul>
 
   </nav>
