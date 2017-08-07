@@ -11,6 +11,7 @@
     }
   },
   "staticViews": {
+    "/": "cwd:views/home.html",
     "/search/classifications/": "cwd:views/search/classifications.html",
     "/visualizations/map/": "cwd:views/visualizations/map.html",
     "/visualizations/municipality-events/": "cwd:views/visualizations/municipality-events.html"

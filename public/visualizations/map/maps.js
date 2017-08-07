@@ -35,7 +35,7 @@ var fill = d3.scale.log()
 
 
 queue()
-    .defer(d3.json, "swiss-maps/topojson/swiss-municipalities-simplified.json") 
+    .defer(d3.json, "map/swiss-maps/topojson/swiss-municipalities-simplified.json") 
     .await(ready);
 
     var d_array = {};
@@ -64,7 +64,7 @@ function mousemove(d) {
 		.style("top", (d3.event.pageY) + "px");
 }
 
-d3.json("swiss-maps/topojson/switzerland-simplified.json", function(error, topology) {
+d3.json("map/swiss-maps/topojson/switzerland-simplified.json", function(error, topology) {
   svg.append("path")
       .datum(topojson.mesh(topology, topology.objects["swiss-cantons"], function(a, b) { return a.properties.no !== b.properties.no}))
       .attr("d", path)
