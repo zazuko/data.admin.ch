@@ -1,6 +1,48 @@
 {
   "baseConfig": "trifid:config-sparql.json",
   "sparqlEndpointUrl": "https://lindas-data.ch:8443/annex/lindas/sparql/query",
+  "i18n": null,
+  "content": {
+    "navigation": [
+      {
+        "title": "Intro",
+        "link": "/"
+      },
+      {
+        "title": "Linked Data?",
+        "link": "/linked-data/"
+      },
+      {
+        "title": "Applications",
+        "navigation": [
+          {
+            "title": "STATPOP",
+            "link": "/visualizations/map/"
+          },
+          {
+            "title": "Municipality Events",
+            "link": "/visualizations/municipality-events/"
+          },
+          {
+            "title": "Municipalities Search",
+            "link": "/search/municipalities/"
+          }
+        ]
+      },
+      {
+        "title": "LINDAS Platform",
+        "link": "/lindas/"
+      },
+      {
+        "title": "Available Datasets",
+        "link": "/datasets/"
+      },
+      {
+        "title": "SPARQL Endpoint",
+        "link": "/sparql/"
+      }
+    ]
+  },
   "sparqlProxy": {
     "options": {
       "queryOperation": "postQueryUrlencoded",
@@ -12,7 +54,10 @@
   },
   "staticViews": {
     "/": "cwd:views/home.html",
-    "/search/classifications/": "cwd:views/search/classifications.html",
+    "/linked-data/": "cwd:views/linked-data.html",
+    "/lindas/": "cwd:views/lindas.html",
+    "/datasets/": "cwd:views/datasets.html",
+    "/search/municipalities/": "cwd:views/search/municipalities.html",
     "/visualizations/map/": "cwd:views/visualizations/map.html",
     "/visualizations/municipality-events/": "cwd:views/visualizations/municipality-events.html"
   },

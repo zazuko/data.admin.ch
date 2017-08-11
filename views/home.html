@@ -14,6 +14,17 @@ ${include('cwd:views/navigation.html')}
    <div class="col-sm-12">
     <div class="row">
      <h1>data.admin.ch - Linked Data Pilot</h1>
+${m(`
+Willkommen beim Linked Data Pilot. Diese Pilotapplikation erläutert und präsentiert:
+* Was Linked Data (LD) und Linked Open Data (LOD) sind, welches Datenmodel und welche Datenformate dahinterstecken und wie LOD abgefragt werden kann -> [Linked Data?](/linked-data/)
+* Welches Potential in LOD steckt: Beispielapplikationen -> Applications
+* Wie LOD beim Bund gespeichert wird -> [LINDAS Platform](/lindas/)
+* Welche LOD gegenwärtig beim Bund verfügbar sind und abgefragt werden können -> [Available Datasets](/datasets/)
+* Wo der generische SPARQL endpoint von LINDAS genutzt werden kann -> [SPARQL Endpoint](/sparql/)
+
+<br>
+Der LOD Pilot wird vom Bundesamt für Statistik zur Verfügung gestellt und laufend angepasst.
+`)}
     </div>
    </div>
   </div>
@@ -23,7 +34,6 @@ ${include('cwd:views/footer.html')}
 
  <script src="/js/vendors.min.js"></script>
  <script src="/js/main.min.js"></script>
- <script src="/js/render-ld.js"></script>
 ${include('cwd:views/powered.html')}
  </body>
 </html>

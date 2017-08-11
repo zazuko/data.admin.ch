@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+${include('cwd:views/header.html')}
+
+ </head>
+ <body>
+ <div class="container container-main">
+
+${include('cwd:views/navigation.html')}
+
+  <div class="container-fluid">
+   <div class="col-sm-12">
+    <div class="row">
+      ${m(`
+# LINDAS Platform
+LINDAS ist ein Triplestore welcher vom [Bundesarchiv](https://www.bar.admin.ch/bar/de/home/recherche/suchen/suchmaschinen-portale.html) betrieben wird. LINDAS ermöglicht es allen Bundesämtern effizient ihre Daten zu publizieren. Weitere Informationen dazu finden Sie auf [https://lindas-data.ch/](https://lindas-data.ch/).
+      `)}
+    </div>
+   </div>
+  </div>
+
+${include('cwd:views/footer.html')}
+ </div>
+
+ <script src="/js/vendors.min.js"></script>
+ <script src="/js/main.min.js"></script>
+${include('cwd:views/powered.html')}
+ </body>
+</html>
