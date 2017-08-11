@@ -13,7 +13,62 @@ ${include('cwd:views/navigation.html')}
   <div class="container-fluid">
    <div class="col-sm-12">
     <div class="row">
-     <h1>data.admin.ch - Linked Data Pilot</h1>
+     ${m(`
+# Datasets
+
+## Historisiertes Gemeindeverzeichniss
+Als erster Proof of Concept wurde das historisierte Gemeindeverzeichnis des Bundesamtes für Statistik BFS in die LINDAS-Infrastruktur geladen und kann nun über einen SPARQL-Endpoint auf dem Linked-Open-Government-Data Pilotportal des BFS zur Weiterverwendung erreicht werden. Damit steht der Gemeindebestand der Schweiz zu verschiedenen Zeitpunkten (historisiert) maschinenlesbar zur Verfügung. Da LINDAS die laufenden Aktualisierungen des historisierten Gemeindeverzeichnisses automatisch nachführt, können Anwendungen aus dem privaten wie auch öffentlichen Umfeld diese Datenquelle ohne Zusatzaufwand (spezielle und wiederholte Updates) als Linked Open Government Data Service nutzen.
+
+* [Suche in Gemeinden](/search/municipalities/)
+* [Visualisation der Gemeindeänderungen](/visualizations/municipality-events)
+* [Gemeinden](http://classifications.data.admin.ch/municipality/)
+* [Bezirke](http://classifications.data.admin.ch/district/)
+* [Kantone](http://classifications.data.admin.ch/canton/)
+
+## Swisstopo - [ld.geo.admin.ch](https://www.geo.admin.ch/de/geo-dienstleistungen/geodienste/linkeddata.html)
+Die Gemeinde-, Bezirks- und Kantonsgrenzen als Linked Data. Weiter Informationen unter [ld.geo.admin.ch](https://ld.geo.admin.ch)
+
+* [Grenzen Gemeinden](https://ld.geo.admin.ch/boundaries/municipality/)
+* [Grenzen Bezirke](https://ld.geo.admin.ch/boundaries/district/)
+* [Grenzen Kantone](https://ld.geo.admin.ch/boundaries/canton/)
+
+## Prototype [DIDOK](https://opentransportdata.swiss/dataset/didok) als Linked Data auf [lod.opentransportdata.swiss](http://lod.opentransportdata.swiss/)
+DiDok steht für Dienststellendokumentation. Bei den Daten handelt es sich um einen Auszug aller in der Schweiz gültigen Betriebspunkte, inkl. aller Haltestellen.
+Beispiele:
+* [Bahnhof Basel](http://lod.opentransportdata.swiss/didok/8500010)
+* [Standort Bahnhof Arth-Goldau](http://lod.opentransportdata.swiss/didok/8505004/geometry)
+
+## Prototype Umweltdaten BAFU
+Erste Datensätze (Luft- und Wasserqualität) über LINDAS publiziert:
+* [Beispiel Abfrage (Luftqualität: PM10, Jahresmittel, Bern-Bollwerk)](http://yasgui.org/short/Byx8A_iPb)
+* [Beispiel Abfrage (Bodenqualität: Blei, alle Erhebungen 2009)](http://yasgui.org/short/rJkHJKsD-)
+
+## Kombinierte Beispiele
+
+[Abfrage auf Daten vom historisierten Gemeindeverzeichniss und Swisstopo welches alle Gemeinden mit Änderung im 2017 auf einer Karte anzeigt.](http://bit.ly/2fze3yc)
+
+
+## Weitere Datasets in Prüfung
+Als weitere Datenbestände, deren Erschliessung, Verknüpfung, Anreicherung und Publikation als Linked Open Government Data einen hohen Nutzen für zahlreiche Anwendungen mit sich bringen würden, kommen die Folgenden in Betracht (nicht priorisierte oder abschliessende und nicht mit den betreffenden Ämtern abgesprochene Auswahl):
+
+* Betriebs- und Unternehmensregister BUR und UID (BFS)
+* Fahrpläne (SBB, Transportunternehmen Schweiz)
+* Gebäude und Wohnungsregister GWR (BFS)
+* Weitere Geodaten (swisstopo)
+* Georeferenzierte Adressen (swisstopo und BFS, Post)
+* Haltestellen und Infrastruktur ÖV (SBB, BLS, Transportunternehmen Schweiz)
+* Handelsregister (Kantone, SECO) und Zefix (BJ) 
+* Kataloge Bundesarchiv, Nationalbibliothek (BAR, NB)
+* Legislation (Bundesgericht)
+* Wetterdaten (Meteo Schweiz)
+* Register von Kontaktpersonen bei Bund, Kantonen und Gemeinden
+* Terminologie-Datenbank Termdat (Bundeskanzlei)
+* Verkehrsströme (ASTRA, Kantone)
+
+<br>
+Die Reihenfolge und das konkrete Vorgehen bei der Erschliessung dieser und weiterer Datensätze ist weiter abzuklären.
+
+     `)}
     </div>
    </div>
   </div>

@@ -63,27 +63,26 @@
                ${
                   (config.content.navigation || []).map(
                     function (entry) {
-                      let act = (url.pathname===entry.link)?' class="active"':'';
-                      return `
-               <li>
-                 <a href="${entry.link}"${act}>${t(`navigation:${entry.title}`)}</a>
-               </li>`;
-}
-                  ).join("")
-                }
-<!--
+                      return entry.navigation ? `
                 <li class="list-sub">
-                  <a href="#">Visualizations</a>
+                  <a href="#">${t(`navigation:${entry.title}`)}</a>
                   <nav class="drilldown-sub">
-                    <a href="#" class="icon icon--before icon--less drilldown-back">Back</a>
+                    <a href="#" class="icon icon--before icon--less drilldown-back">${t('admin:Back')}</a>
                     <ul>
-                        <li><a href="/visualizations/map">Maps STATPOP</a></li>
-                        <li><a href="/visualizations/municipality-events">Municipality Events</a></li>
+                    ${entry.navigation.map(function (subentry) {return `
+                        <li><a href="${subentry.link}">${t(`navigationSub:${subentry.title}`)}</a></li>`
+                    }).join("")}
                     </ul>
                   </nav>
                 </li>
-                <li><a href="/sparql/">SPARQL Query</a></li>
--->
+                      `:`
+               <li>
+                 <a href="${entry.link}"${(url.pathname===entry.link)?' class="active"':''}>${t(`navigation:${entry.title}`)}</a>
+               </li>`
+
+                    }
+                  ).join("")
+                }
               </ul>
               <a href="#" class="yamm-close-bottom"><span class="icon icon--top" aria-hidden="true"></span></a>
             </nav>
@@ -110,8 +109,7 @@
    ${
       (config.content.navigation || []).map(
         function (entry) {
-          if ( entry.navigation ) {
-            return `
+          return entry.navigation ? `
     <li class="dropdown yamm-fw${entry.navigation.find( function (subentry) { return url.pathname===subentry.link } ) ? ' current' : ''}">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">${t(`navigation:${entry.title}`)}</a>
       <ul class="dropdown-menu" role="menu">
@@ -134,13 +132,11 @@
           <a href="#" class="yamm-close-bottom" role="menuitem" tabindex="-1"><span class="icon icon--top"></span></a>
         </div>
       </ul>
-    </li>`
-          } else {
-            return `
+    </li>
+      `:`
     <li class="dropdown yamm-fw${(url.pathname===entry.link)?' current':''}">
       <a href="${entry.link}">${t(`navigation:${entry.title}`)}</a>
-    </li>`;
-          }
+    </li>`
         }
       ).join("")
     }
