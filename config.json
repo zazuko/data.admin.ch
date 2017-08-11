@@ -1,7 +1,7 @@
 {
   "baseConfig": "trifid:config-sparql.json",
   "sparqlEndpointUrl": "https://lindas-data.ch:8443/annex/lindas/sparql/query",
-  "i18n": null,
+  "i18n": false,
   "content": {
     "navigation": [
       {
