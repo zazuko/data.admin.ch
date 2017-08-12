@@ -34,7 +34,7 @@
       <img src="/img/logo-CH.svg" onerror="this.onerror=null; this.src='/img/logo-CH.png'" alt="back to home" />
       <h1>data.admin.ch - Linked Data Pilot</h1>
     </a>
-    <form class="form-horizontal form-search pull-right" role="form" action="/search/">
+    <form class="form-horizontal form-search pull-right" role="form" action="/search/municipalities/">
       <h2 class="sr-only">${t('admin:Search')}</h2>
       <label for="search-field" class="sr-only">Search:</label>
       <input id="search-field" name="q" class="form-control search-field" type="text" placeholder="${t('admin:Search')}">
@@ -93,10 +93,10 @@
      <div class="table-cell dropdown">
        <a href="#" class="nav-mobile-menu dropdown-toggle" data-toggle="dropdown"><span class="icon icon--search"></span></a>
        <div class="dropdown-menu" role="menu">
-         <form class="form" role="form" action="/search/classifications/">
+         <form class="form" role="form" action="/search/municipalities/">
            <h2 class="sr-only">${t('admin:Search')}</h2>
            <label for="search-field" class="sr-only">Search:</label>
-           <input name="q" class="form-control" type="text" placeholder="$t{'admin:Search')}">
+           <input name="q" class="form-control" type="text" placeholder="${t('admin:Search')}">
            <span class="icon icon--search"></span>
          </form>
        </div>

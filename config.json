@@ -75,7 +75,7 @@
       "folder": "cwd:node_modules/swiss-styleguide/build"
     },
     "zackFiles": {
-      "path": "/search/classifications/",
+      "path": "/search/municipalities/",
       "folder":  "cwd:node_modules/zack-search/dist"
     }
   },
