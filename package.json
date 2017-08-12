@@ -5,8 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "swiss-styleguide": "^3.0.0",
-    "trifid": "git+https://github.com/zazuko/trifid.git#develop",
-    "zack-search": "git+https://github.com/zazuko/zack-search.git#develop"
+    "trifid": "github:zazuko/trifid#develop",
+    "zack-search": "github:zazuko/zack-search#develop"
   },
   "devDependencies": {},
   "scripts": {
