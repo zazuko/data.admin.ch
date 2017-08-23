@@ -53,7 +53,6 @@ ${include('cwd:views/navigation.html')}
 PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX gont: <https://gont.ch/> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX canton: 	<http://classifications.data.admin.ch/canton/>
 PREFIX ech71: <http://data.admin.ch/id/code/ech-0071/>
 
 SELECT ?parent ?parent_name ?child ?child_name ?abmode ?admode
@@ -74,8 +73,8 @@ WHERE {
       gont:admissionMode ?admode ;
       gont:admissionEvent ?event .
 
-  FILTER(?admode IN (ech71:20, ech71:21, ech71:23, ech71:26)).
-  FILTER(?abmode IN (ech71:26, ech71:29, ech71:23)).
+  FILTER(?admode IN (ech71:20, ech71:21, ech71:23, ech71:24, ech71:26)).
+  FILTER(?abmode IN (ech71:24, ech71:26, ech71:29, ech71:23)).
 
   BIND (CONCAT(?_child_name, ' (', str(year(?eventdate)),')') AS ?child_name).
 }
@@ -107,7 +106,7 @@ ${include('cwd:views/footer.html')}
         "label2": "child_name",
         // for d3sparql.sankey()
         "width": document.getElementsByClassName('container')[0].offsetWidth - 50,
-        "height": 22000,
+        "height": 35000,
         "selector": "#result"
       }
       d3sparql.sankey(json, config)
