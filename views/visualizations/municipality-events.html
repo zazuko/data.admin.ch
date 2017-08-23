@@ -59,7 +59,7 @@ PREFIX ech71: <http://data.admin.ch/id/code/ech-0071/>
 SELECT ?parent ?parent_name ?child ?child_name ?abmode ?admode
 
 WHERE {
-  
+
   ?event a gont:MunicipalityChangeEvent ;
     gont:id ?eventid ;
     gont:date ?eventdate .
@@ -68,18 +68,18 @@ WHERE {
       gont:shortName ?parent_name ;
       gont:abolitionMode ?abmode ;
       gont:abolitionEvent ?event .
-    
+
     ?child a gont:MunicipalityVersion ;
       gont:shortName ?_child_name ;
       gont:admissionMode ?admode ;
       gont:admissionEvent ?event .
-  
-  FILTER(?admode IN (ech71:21, ech71:23)).
-  FILTER(?abmode IN (ech71:29, ech71:23)).
-  
+
+  FILTER(?admode IN (ech71:20, ech71:21, ech71:23, ech71:26)).
+  FILTER(?abmode IN (ech71:26, ech71:29, ech71:23)).
+
   BIND (CONCAT(?_child_name, ' (', str(year(?eventdate)),')') AS ?child_name).
 }
-ORDER BY ?eventid         
+ORDER BY ?eventid
      </textarea>
      <div id="result"></div>
 
@@ -107,7 +107,7 @@ ${include('cwd:views/footer.html')}
         "label2": "child_name",
         // for d3sparql.sankey()
         "width": document.getElementsByClassName('container')[0].offsetWidth - 50,
-        "height": 12000,
+        "height": 22000,
         "selector": "#result"
       }
       d3sparql.sankey(json, config)
