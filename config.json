@@ -1,7 +1,10 @@
 {
   "baseConfig": "trifid:config-sparql.json",
   "sparqlEndpointUrl": "https://lindas-data.ch:8443/lindas/query",
-  "i18n": false,
+  "sparqlEndpointAuthentication": {
+    "user": "public",
+    "password": "public"
+  },
   "content": {
     "navigation": [
       {
@@ -44,11 +47,9 @@
     ]
   },
   "sparqlProxy": {
-    "options": {
-      "queryOperation": "postQueryUrlencoded",
-      "authentication": {
-        "user": "public",
-        "password": "public"
+    "default": {
+      "options": {
+        "queryOperation": "postQueryUrlencoded"
       }
     }
   },
@@ -80,24 +81,24 @@
     }
   },
   "handler": {
-    "options": {
-      "authentication": {
-        "user": "public",
-        "password": "public"
-      },
-      "resourceExistsQuery": "ASK { GRAPH ?g { <${iri}> ?p ?o }}",
-      "resourceGraphQuery": "DESCRIBE <${iri}>"
+    "root": {
+      "options": {
+        "resourceExistsQuery": "ASK { GRAPH ?g { <${iri}> ?p ?o }}",
+        "resourceGraphQuery": "DESCRIBE <${iri}>"
+      }
     }
   },
   "renderer": {
-    "module": "trifid-renderer-simple",
-    "template": "cwd:views/index.html",
-    "templateError": "cwd:views/error.html",
-    "vocab": "renderer:vocab.json"
+    "root": {
+      "template": "cwd:views/index.html",
+      "templateError": "cwd:views/error.html"
+    }
   },
   "yasgui": {
-    "options": {
-      "template": "cwd:views/yasgui.html"
+    "default": {
+      "options": {
+        "template": "cwd:views/yasgui.html"
+      }
     }
   }
 }
