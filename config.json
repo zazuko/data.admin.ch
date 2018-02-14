@@ -76,7 +76,7 @@
       "folder": "cwd:node_modules/swiss-styleguide/build"
     },
     "zackFiles": {
-      "path": "/search/municipalities",
+      "path": "/zack-search/",
       "folder":  "cwd:node_modules/zack-search/dist"
     }
   },
@@ -96,9 +96,7 @@
   },
   "yasgui": {
     "default": {
-      "options": {
         "template": "cwd:views/yasgui.html"
-      }
     }
   }
 }
