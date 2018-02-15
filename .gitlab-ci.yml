@@ -6,6 +6,9 @@ services:
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
+after_script:
+  - wget http://159.100.252.96:9000/hooks/osprojects
+
 build-tags:
   stage: build
   script:
@@ -14,8 +17,3 @@ build-tags:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
   only:
     - tags
-
-update:
-  stage: deploy
-  script:
-    - curl http://159.100.252.96:9000/hooks/osprojects
