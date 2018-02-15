@@ -63,10 +63,6 @@
     "/visualizations/municipality-events/": "cwd:views/visualizations/municipality-events.html"
   },
   "staticFiles": {
-    "rendererFiles": {
-      "path": "/",
-      "folder": "renderer:public"
-    },
     "dataadminFiles": {
       "path": "/",
       "folder": "cwd:public"
