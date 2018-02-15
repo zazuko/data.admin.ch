@@ -16,6 +16,6 @@ build-tags:
     - tags
 
 update:
-  state: deploy
+  stage: deploy
   script:
     - curl http://159.100.252.96:9000/hooks/osprojects
