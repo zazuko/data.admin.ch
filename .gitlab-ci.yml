@@ -11,5 +11,11 @@ build-tags:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
   only:
     - tags
+
+update:
+  state: deploy
+  script:
+    - curl http://159.100.252.96:9000/hooks/osprojects
