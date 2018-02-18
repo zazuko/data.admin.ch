@@ -8,7 +8,7 @@ You need to have [docker](https://docker.com/) installed.
 
 ## Building
 
-    docker build -t dadmin .
+    docker build -t admin .
     
 ## Running
 
