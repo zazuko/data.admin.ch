@@ -5,52 +5,18 @@
     "user": "public",
     "password": "public"
   },
-  "content": {
-    "navigation": [
-      {
-        "title": "Intro",
-        "link": "/"
-      },
-      {
-        "title": "Linked Data?",
-        "link": "/linked-data/"
-      },
-      {
-        "title": "Applications",
-        "navigation": [
-          {
-            "title": "STATPOP 2011",
-            "link": "/visualizations/map/"
-          },
-          {
-            "title": "Municipality Events",
-            "link": "/visualizations/municipality-events/"
-          },
-          {
-            "title": "Municipalities Search",
-            "link": "/search/municipalities/"
-          }
-        ]
-      },
-      {
-        "title": "LINDAS Platform",
-        "link": "/lindas/"
-      },
-      {
-        "title": "Available Datasets",
-        "link": "/datasets/"
-      },
-      {
-        "title": "SPARQL Endpoint",
-        "link": "/sparql/"
-      }
-    ]
-  },
   "sparqlProxy": {
     "default": {
       "options": {
         "queryOperation": "postQueryUrlencoded"
       }
+    }
+  },
+  "plugins": {
+    "datadog": {
+      "priority": 5,
+      "module": "trifid-core:./plugins/middleware",
+      "middleware": "express-datadog"
     }
   },
   "staticViews": {
@@ -94,5 +60,46 @@
     "default": {
         "template": "cwd:views/yasgui.html"
     }
+  },
+  "content": {
+    "navigation": [
+      {
+        "title": "Intro",
+        "link": "/"
+      },
+      {
+        "title": "Linked Data?",
+        "link": "/linked-data/"
+      },
+      {
+        "title": "Applications",
+        "navigation": [
+          {
+            "title": "STATPOP 2011",
+            "link": "/visualizations/map/"
+          },
+          {
+            "title": "Municipality Events",
+            "link": "/visualizations/municipality-events/"
+          },
+          {
+            "title": "Municipalities Search",
+            "link": "/search/municipalities/"
+          }
+        ]
+      },
+      {
+        "title": "LINDAS Platform",
+        "link": "/lindas/"
+      },
+      {
+        "title": "Available Datasets",
+        "link": "/datasets/"
+      },
+      {
+        "title": "SPARQL Endpoint",
+        "link": "/sparql/"
+      }
+    ]
   }
 }

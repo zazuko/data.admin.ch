@@ -4,6 +4,7 @@
   "description": "Trifid deployment for data.admin.ch SPARQL Endpoint",
   "main": "index.js",
   "dependencies": {
+    "express-datadog": "^1.0.0",
     "swiss-styleguide": "^3.0.0",
     "trifid": "^2.0.0",
     "zack-search": "github:zazuko/zack-search#develop"
