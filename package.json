@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express-datadog": "^1.0.0",
+    "node-dogstatsd": "git://github.com/bergos/node-dogstatsd.git",
     "swiss-styleguide": "^3.0.0",
     "trifid": "^2.0.0",
     "zack-search": "github:zazuko/zack-search#develop"
