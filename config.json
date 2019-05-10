@@ -25,6 +25,7 @@
     "/lindas/": "cwd:views/lindas.html",
     "/datasets/": "cwd:views/datasets.html",
     "/search/municipalities/": "cwd:views/search/municipalities.html",
+    "/search/offices/": "cwd:views/search/offices.html",
     "/visualizations/map/": "cwd:views/visualizations/map.html",
     "/visualizations/municipality-events/": "cwd:views/visualizations/municipality-events.html"
   },

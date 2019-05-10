@@ -1,0 +1,145 @@
+${set('moduleAbout','<a href="//github.com/zazuko/zack-search" target="_blank">Zack Search</a>')}
+<!DOCTYPE html>
+<html>
+ <head>
+
+${include('cwd:views/header.html')}
+   <link rel="stylesheet" href="/search/zack.css">
+ </head>
+ <body>
+ <div class="container container-main">
+
+${include('cwd:views/navigation.html')}
+
+  <div class="container-fluid">
+   <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="row">
+     <h1>Search Federal Offices</h1>
+    </div>
+   </div>
+   <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="row">
+     <div class="zack-query-box">
+       <form class="zack-query-form form-horizontal form-search" action="javascript:document.getElementById('query').blur();">
+           <h2 class="sr-only">Searchterm</h2>
+           <label for="query" class="sr-only">Searchterm</label>
+           <input autofocus id="query" class="zack-query-input zack-big form-control search-field" type="text" placeholder="Searchterm">
+           <button class="icon icon--search icon--before"></button>
+       </form>
+      </div>
+     </div>
+    </div>
+    <div class="col-sm-12 col-md-12">
+     <div class="row">
+      <div id="filter-container" class="zack-filter">
+      </div>
+     </div>
+     <div class="row">
+      <div class="zack-content">
+       <div class="zack-result-list">
+        <div id="scrollArea" class="clusterize-scroll">
+         <div id="contentArea" class="clusterize-content">
+          <div class="clusterize-no-data">Loading data…</div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="zack-overview">
+       <div class="col-sm-3">
+        <span id="count" class="zack-count zack-big"></span> <i>Results</i>
+       </div>
+      </div>
+     </div>
+    </div>
+
+${include('cwd:views/footer.html')}
+
+ </div>
+
+<script src="/js/vendors.min.js"></script>
+<script src="/js/main.min.js"></script>
+<script src="/zack-search/zack.min.js"></script>
+
+<script>
+
+var boundariesRenderer = {}
+
+boundariesRenderer.init = function (metadata) {
+}
+
+boundariesRenderer.renderResult = function (page, subject) {
+  var rendering = ''
+
+  var link = subject.toString()
+  var title = page.match(subject, 'https://schema.org/name').toArray()
+  var abk = page.match(subject, 'https://schema.org/alternateName').toArray()
+
+  lang = function(vari, lang) { 
+    one = vari.filter(x => x.object.language == lang).shift()
+    return (one ? one.object.toString() : '')
+  }
+
+  rendering = '<div class="zack-result" style="height: 95px"><div class="result-main col-md-9 col-sm-9 col-xs-9"><article class="search-result">' +
+              '<a href="' + link + '">' +
+              lang(title, 'de') + '<br>' +
+              lang(title, 'fr') + '<br>' +
+              lang(title, 'it') + '<br>' +
+              lang(title, 'en') + '<br>' +
+              '</a>' +
+              '</div>' +
+              '<div class="result-detail col-md-3 col-sm-3 col-xs-3">' +
+              lang(abk, 'de') + '<br>' +
+              lang(abk, 'fr') + '<br>' +
+              lang(abk, 'it') + '<br>' +
+              lang(abk, 'en') + '<br>' +
+              '</div>' +
+              '</article></div></div>'
+
+console.log(rendering)
+
+  return rendering
+}
+
+boundariesRenderer.postRender = function () {
+}
+
+
+  var options = {
+    endpointUrl: 'http://ld.zazuko.com/query/',
+    filterContainer: 'filter-container',
+    resultTypes: ['https://schema.org/DefinedTerm'],
+    resultList: {
+      renderer: boundariesRenderer,
+      pageSize: 20,
+      preload: 80
+    },
+    queries: {
+      adminMeta: 'PREFIX : <http://voc.zazuko.com/zack#> PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX  text: <http://jena.apache.org/text#> PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX  schema: <https://schema.org/> PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#> CONSTRUCT { _:b0 :numberOfResults ?count.  _:b0 :queryStart "0".  _:b0 :queryEnd "0".  } WHERE { { SELECT (COUNT(?sub) as ?count) { \${textmatch} \${filters} } } }',
+      adminFulltextPart: '?sub schema:alternateName|schema:name ?name. FILTER( CONTAINS(LCASE(?name), LCASE("\${searchString}")))',
+      adminResultSet: 'PREFIX : <http://voc.zazuko.com/zack#> PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX  text: <http://jena.apache.org/text#> PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX  schema: <https://schema.org/> PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#> CONSTRUCT { :query :result ?sub .  ?sub a :resultItem .  ?sub ?pred ?obj . ?sub :score ?score .  } WHERE { { SELECT  ?sub ?score WHERE { \${textmatch} \${filters} } OFFSET \${offset} LIMIT \${limit} } GRAPH ?g { ?sub ?pred ?obj .} }'
+    },
+    endpoints: {
+      'http://ld.zazuko.com/query/': {
+        queries: {
+          search: 'adminResultSet',
+          count: 'adminMeta',
+          textmatch: 'adminFulltextPart'
+        }
+      }
+    },
+    plugins: []
+  }
+
+  window.app = new Zack(options)
+
+  window.app.init().catch(function (err) {
+    console.error(err)
+  })
+
+</script>
+${include('cwd:views/powered.html')}
+</body>
+</html>
