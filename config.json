@@ -12,13 +12,6 @@
       }
     }
   },
-  "plugins": {
-    "datadog": {
-      "priority": 5,
-      "module": "trifid-core:./plugins/middleware",
-      "middleware": "express-datadog"
-    }
-  },
   "staticViews": {
     "/": "cwd:views/home.html",
     "/linked-data/": "cwd:views/linked-data.html",
