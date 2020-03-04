@@ -76,14 +76,16 @@ boundariesRenderer.renderResult = function (page, subject) {
   var link = subject.toString()
   var title = page.match(subject, 'https://schema.org/name').toArray()
   var abk = page.match(subject, 'https://schema.org/alternateName').toArray()
+  var termSet = page.match(subject, 'https://schema.org/inDefinedTermSet').toArray().shift().object.toString()
+  var old = (termSet[termSet.length-1] == 'v') ? true : false
 
   lang = function(vari, lang) { 
     one = vari.filter(x => x.object.language == lang).shift()
     return (one ? one.object.toString() : '')
   }
 
-  rendering = '<div class="zack-result" style="height: 95px"><div class="result-main col-md-9 col-sm-9 col-xs-9"><article class="search-result">' +
-              '<a href="' + link + '">' +
+  rendering = '<div class="zack-result" style="height: 95px'+(old?'; background-color: lightyellow':'')+'"><div class="result-main col-md-9 col-sm-9 col-xs-9"><article class="search-result">' +
+              '<a href="' + link + '"'+(old?' style="text-decoration:line-through"':'')+'>' +
               lang(title, 'de') + '<br>' +
               lang(title, 'fr') + '<br>' +
               lang(title, 'it') + '<br>' +
@@ -98,7 +100,7 @@ boundariesRenderer.renderResult = function (page, subject) {
               '</div>' +
               '</article></div></div>'
 
-console.log(rendering)
+//console.log(rendering)
 
   return rendering
 }
