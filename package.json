@@ -1,6 +1,6 @@
 {
   "name": "data.admin.ch",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Trifid deployment for data.admin.ch SPARQL Endpoint",
   "main": "index.js",
   "dependencies": {
