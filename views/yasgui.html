@@ -46,7 +46,8 @@ ${include('cwd:views/footer.html')}
 
     YASGUI.YASR.plugins.leaflet.defaults.defaultMap = 'chmaps';
 
-    var config = {"api":{"urlShortener":"http://yasgui.org/shorten"}};
+    var config = {"api":{}}
+    ${typeof urlShortener !== 'undefined' ? "config.api.urlShortener = '" + urlShortener + "'" : ''}
     var yasgui = YASGUI(document.getElementById('yasgui'), config)
  </script>
 
