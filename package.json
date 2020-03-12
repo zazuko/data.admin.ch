@@ -1,13 +1,13 @@
 {
   "name": "data.admin.ch",
-  "version": "1.9.2",
+  "version": "1.9.4",
   "description": "Trifid deployment for data.admin.ch SPARQL Endpoint",
   "main": "index.js",
   "dependencies": {
     "express-datadog": "^1.0.0",
     "node-dogstatsd": "git://github.com/bergos/node-dogstatsd.git",
     "swiss-styleguide": "^3.0.0",
-    "trifid": "^2.3.1",
+    "trifid": "^2.3.4",
     "zack-search": "^0.8.0"
   },
   "devDependencies": {},
