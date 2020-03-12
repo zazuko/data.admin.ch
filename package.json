@@ -8,7 +8,7 @@
     "node-dogstatsd": "git://github.com/bergos/node-dogstatsd.git",
     "swiss-styleguide": "^3.0.0",
     "trifid": "^2.3.1",
-    "zack-search": "github:zazuko/zack-search#master"
+    "zack-search": "^0.8.0"
   },
   "devDependencies": {},
   "scripts": {

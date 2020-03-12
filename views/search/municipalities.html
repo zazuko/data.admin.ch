@@ -61,34 +61,33 @@ ${include('cwd:views/footer.html')}
 
 <script src="/js/vendors.min.js"></script>
 <script src="/js/main.min.js"></script>
-<script src="/zack-search/zack.min.js"></script>
+<script src="/zack-search/zack.js"></script>
 
 <script>
 
-var boundariesRenderer = {}
+var municipalitiesRenderer = {}
 
-boundariesRenderer.init = function (metadata) {
+municipalitiesRenderer.init = function (metadata) {
 }
 
-boundariesRenderer.renderResult = function (page, subject) {
+municipalitiesRenderer.renderResult = function (page, subject) {
   var rendering = ''
 
-  var link = subject.toString()
-  var titleString = subject.toString()
-
+  var link = subject.value
+  var titleString = subject.value
   var titlePrefix = ''
   if (page.match(subject, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'https://gont.ch/PoliticalMunicipality').toArray().shift()) { titlePrefix = "Municipality" }
 
   var bfsNumber = page.match(subject, 'http://purl.org/dc/terms/identifier').toArray().shift()
-  if (bfsNumber) {var bfsNumberString = bfsNumber.object.toString()}
+  if (bfsNumber) {var bfsNumberString = bfsNumber.object.value}
 
   var versions = page.match(subject, 'https://gont.ch/municipalityVersion').toArray()
   var versionsSpan = ''
   if (versions) {
       versions.forEach(function(ver, ind){
-          versionsSpan = versionsSpan + '<span>' + (ind ? ', ' : '') + '<a href="' + ver.object.toString() + '">' + ver.object.toString().split("/")[4] + '</span>'
+          versionsSpan = versionsSpan + '<span>' + (ind ? ', ' : '') + '<a href="' + ver.object.value + '">' + ver.object.value.split("/")[4] + '</span>'
           var munName = page.match(ver.object.nominalValue, 'https://gont.ch/shortName').toArray().shift()
-          if (munName) { titleString = munName.object.toString()}
+          if (munName) { titleString = munName.object.value}
       })
   }
 
@@ -108,7 +107,7 @@ boundariesRenderer.renderResult = function (page, subject) {
   return rendering
 }
 
-boundariesRenderer.postRender = function () {
+municipalitiesRenderer.postRender = function () {
 }
 
 
@@ -117,7 +116,7 @@ boundariesRenderer.postRender = function () {
     filterContainer: 'filter-container',
     resultTypes: ['https://gont.ch/Municipality'],
     resultList: {
-      renderer: boundariesRenderer,
+      renderer: municipalitiesRenderer,
       pageSize: 20,
       preload: 80
     },
