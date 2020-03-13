@@ -84,10 +84,10 @@ municipalitiesRenderer.renderResult = function (page, subject) {
   var versions = page.match(subject, 'https://gont.ch/municipalityVersion').toArray()
   var versionsSpan = ''
   if (versions) {
-      versions.forEach(function(ver, ind){
+      versions.forEach(function(ver, ind) {
           versionsSpan = versionsSpan + '<span>' + (ind ? ', ' : '') + '<a href="' + ver.object.value + '">' + ver.object.value.split("/")[4] + '</span>'
-          var munName = page.match(ver.object.nominalValue, 'https://gont.ch/shortName').toArray().shift()
-          if (munName) { titleString = munName.object.value}
+          var munName = page.match(ver.object.value, 'https://gont.ch/shortName').toArray().shift()
+          if (munName) { titleString = munName.object.value }
       })
   }
 
