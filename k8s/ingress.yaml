@@ -1,22 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: trifid
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: data-admin-ch.zazukoians.org
+    external-dns.alpha.kubernetes.io/hostname: classifications-data-admin-ch.zazuko.net
 spec:
   rules:
-    - host: data.admin.ch
+    - host: classifications.data.admin.ch
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: trifid
-              servicePort: 80
-    - host: "*.data.admin.ch"
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: trifid
-              servicePort: 80
+              service:
+                name: trifid
+                port:
+                  number: 80
