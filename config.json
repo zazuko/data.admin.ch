@@ -20,7 +20,8 @@
     "/search/municipalities/": "cwd:views/search/municipalities.html",
     "/search/offices/": "cwd:views/search/offices.html",
     "/visualizations/map/": "cwd:views/visualizations/map.html",
-    "/visualizations/municipality-events/": "cwd:views/visualizations/municipality-events.html"
+    "/visualizations/municipality-events-static/": "cwd:views/visualizations/municipality-events-static.html",
+    "/visualizations/municipality-events-dynamic/": "cwd:views/visualizations/municipality-events-dynamic.html"
   },
   "staticFiles": {
     "dataadminFiles": {
@@ -33,7 +34,7 @@
     },
     "zackFiles": {
       "path": "/zack-search/",
-      "folder":  "cwd:node_modules/zack-search/dist"
+      "folder": "cwd:node_modules/zack-search/dist"
     }
   },
   "handler": {
@@ -52,7 +53,7 @@
   },
   "yasgui": {
     "default": {
-        "template": "cwd:views/yasgui.html"
+      "template": "cwd:views/yasgui.html"
     }
   },
   "content": {
@@ -74,7 +75,11 @@
           },
           {
             "title": "Municipality Events",
-            "link": "/visualizations/municipality-events/"
+            "link": "/visualizations/municipality-events-static/"
+          },
+          {
+            "title": "Municipal M&As",
+            "link": "/visualizations/municipality-events-dynamic/"
           },
           {
             "title": "Municipalities Search",
